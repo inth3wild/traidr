@@ -14,6 +14,7 @@ import {
   FooterBottomLinks,
   FooterBottomText,
 } from './StyledFooter';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
