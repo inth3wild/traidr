@@ -17,7 +17,7 @@ const config = (): Config => {
         apiHost:
           environment === 'development'
             ? 'http://localhost:5001'
-            : 'http://localhost:5001',
+            : import.meta.env.VITE_BACKEND_URL,
       },
     });
   }
