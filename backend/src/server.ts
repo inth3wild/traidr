@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin:
-      appEnvironmentVariables.nodeEnvironment === 'production'
+      appEnvironmentVariables.nodeEnvironment === 'prod'
         ? appEnvironmentVariables.frontendURL
         : 'http://localhost:5173',
     credentials: true, // Important to allow credentials (cookies)
