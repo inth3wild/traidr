@@ -265,7 +265,7 @@ export const updateShop: RequestHandler = async (req: Request, res: Response) =>
     //   : shop.getDataValue('imageUrls');
 
     const result = await cloudinary.uploader.upload(req.file!.path);
-    const imageUrls =  [result.secure_url] || shop.getDataValue('imageUrls');
+    const imageUrls =  result.secure_url ? [result.secure_url] : shop.getDataValue('imageUrls');
 
     await shop.update({
       name,
