@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeaderContainer, Logo, Nav } from './Styledheader';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
