@@ -1,8 +1,7 @@
-import sequelize from '../config/sequelize.config';
 import OTP from '../database/models/otp.model';
 import Product from '../database/models/product.model';
 import User from '../database/models/user.model';
-import Shop from './models/my-shop.model';
+import Shop from './models/myShop.model';
 
 // Initialize all associations after importing all models
 

@@ -1,9 +1,8 @@
 import { Request, RequestHandler, Response } from 'express';
 import cloudinary from '../config/cloudinary';
-import Shop from '../database/models/my-shop.model';
+import Shop from '../database/models/myShop.model';
 import User from '../database/models/user.model';
 // import upload from '../middlewares/multer'
-
 
 // Define a custom interface for the Request object to include the user and files properties
 interface CustomRequest extends Request {
@@ -17,7 +16,7 @@ interface CustomRequest extends Request {
   };
 }
 
- // Helper function to upload videos
+// Helper function to upload videos
 const uploadVideo = async (video: Express.Multer.File): Promise<string> => {
   const result = await cloudinary.uploader.upload(video.path, {
     resource_type: 'video',
@@ -32,7 +31,10 @@ const uploadImage = async (image: Express.Multer.File): Promise<string> => {
 };
 
 // Get all shops with user details
-export const getAllShops: RequestHandler = async (req: Request, res: Response) => {
+export const getAllShops: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
   try {
     const shops = await Shop.findAll({
       include: [
@@ -53,7 +55,6 @@ export const getAllShops: RequestHandler = async (req: Request, res: Response) =
     });
   }
 };
-
 
 // Get my shops
 // export const getMyShops: RequestHandler = async (req: Request, res: Response) => {
@@ -76,10 +77,9 @@ export const getAllShops: RequestHandler = async (req: Request, res: Response) =
 //   }
 // };
 
-
 export const getMyShops = async (req: Request, res: Response) => {
   try {
-    const UserId = req.params.userId
+    const UserId = req.params.userId;
     // Ensure req.user exists and has an id property
     // @ts-expect-error: not paid for this
     if (!req.user || !req.user.id) {
@@ -88,15 +88,14 @@ export const getMyShops = async (req: Request, res: Response) => {
 
     const shops = await Shop.findAll({
       where: {
-        UserId
-      }
+        UserId,
+      },
     });
 
     res.status(200).json({
-      message: 'Shops retrieved successfully', 
-      shops
+      message: 'Shops retrieved successfully',
+      shops,
     });
-
   } catch (error) {
     console.error('Error retrieving shops:', error);
 
@@ -105,7 +104,7 @@ export const getMyShops = async (req: Request, res: Response) => {
       if (error.name === 'SequelizeDatabaseError') {
         return res.status(400).json({
           message: 'Database error occurred while retrieving shops.',
-          error: error.message
+          error: error.message,
         });
       }
     }
@@ -113,7 +112,7 @@ export const getMyShops = async (req: Request, res: Response) => {
     // For any other types of errors
     res.status(500).json({
       message: 'An unexpected error occurred while retrieving shops.',
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 };
@@ -142,7 +141,10 @@ export const getShop: RequestHandler = async (req: Request, res: Response) => {
 };
 
 // Create a shop with image and video uploads
-export const createShop: RequestHandler = async (req: Request, res: Response) => {
+export const createShop: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
   const customReq = req as CustomRequest;
   const {
     name,
@@ -163,7 +165,9 @@ export const createShop: RequestHandler = async (req: Request, res: Response) =>
   const user = customReq.user;
 
   if (!user) {
-    return res.status(403).json({ message: 'You are not allowed. Please re-login.' });
+    return res
+      .status(403)
+      .json({ message: 'You are not allowed. Please re-login.' });
   }
 
   const UserId = user.id;
@@ -207,7 +211,8 @@ export const createShop: RequestHandler = async (req: Request, res: Response) =>
 
     res.status(201).json({ message: 'Shop created successfully.', shop });
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
     console.error('Error creating shop:', error);
     res.status(500).json({
       message: 'An error occurred while creating the shop.',
@@ -216,9 +221,11 @@ export const createShop: RequestHandler = async (req: Request, res: Response) =>
   }
 };
 
-
 // Update a shop with image and video uploads
-export const updateShop: RequestHandler = async (req: Request, res: Response) => {
+export const updateShop: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
   const customReq = req as CustomRequest;
   const { id } = customReq.params;
   const {
@@ -240,7 +247,9 @@ export const updateShop: RequestHandler = async (req: Request, res: Response) =>
   const user = customReq.user;
 
   if (!user) {
-    return res.status(403).json({ message: 'You are not allowed to update this shop.' });
+    return res
+      .status(403)
+      .json({ message: 'You are not allowed to update this shop.' });
   }
 
   const UserId = user.id;
@@ -253,7 +262,9 @@ export const updateShop: RequestHandler = async (req: Request, res: Response) =>
     }
 
     if (shop.getDataValue('UserId') !== UserId) {
-      return res.status(403).json({ message: 'Unauthorized to update this shop.' });
+      return res
+        .status(403)
+        .json({ message: 'Unauthorized to update this shop.' });
     }
 
     // Upload new videos and images if provided, else use existing ones
@@ -265,7 +276,9 @@ export const updateShop: RequestHandler = async (req: Request, res: Response) =>
     //   : shop.getDataValue('imageUrls');
 
     const result = await cloudinary.uploader.upload(req.file!.path);
-    const imageUrls =  result.secure_url ? [result.secure_url] : shop.getDataValue('imageUrls');
+    const imageUrls = result.secure_url
+      ? [result.secure_url]
+      : shop.getDataValue('imageUrls');
 
     await shop.update({
       name,
@@ -288,7 +301,8 @@ export const updateShop: RequestHandler = async (req: Request, res: Response) =>
 
     res.status(200).json({ message: 'Shop updated successfully.', shop });
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
     console.error('Error updating shop:', error);
     res.status(500).json({
       message: 'An error occurred while updating the shop.',
