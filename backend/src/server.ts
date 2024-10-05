@@ -12,7 +12,6 @@ import authRoutes from './routes/auth.routes';
 import imageRoute from './routes/imageRoute';
 import indexRouter from './routes/index.route';
 import profileRoute from './routes/profileRoute';
-import adminRoute from './routes/adminRoute'
 
 // Initialize app
 const app = express();
@@ -34,7 +33,7 @@ app.use(
   cors({
     origin:
       appEnvironmentVariables.nodeEnvironment === 'production'
-        ? 'https://your-production-site.com'
+        ? appEnvironmentVariables.frontendURL
         : 'http://localhost:5173',
     credentials: true, // Important to allow credentials (cookies)
     methods: 'GET, POST, PUT, HEAD, DELETE',

@@ -22,6 +22,7 @@ const appEnvironmentVariables = {
   resetTokenExpiresIn: process.env.RESET_TOKEN_EXPIRES_IN as string,
   jwtSecretkey: process.env.JWT_SECRET_KEY as string,
   paystackSecretKey: process.env.PAYSTACK_SECRET_KEY as string,
+  frontendURL: process.env.FRONTEND_URL as string,
 };
 
 // Ensure all required environment variables are set
