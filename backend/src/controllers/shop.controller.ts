@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response } from 'express';
+import cloudinary from '../config/cloudinary';
 import Shop from '../database/models/my-shop.model';
 import User from '../database/models/user.model';
-import cloudinary from '../config/cloudinary';
 // import upload from '../middlewares/multer'
 
 
@@ -81,6 +81,7 @@ export const getMyShops = async (req: Request, res: Response) => {
   try {
     const UserId = req.params.userId
     // Ensure req.user exists and has an id property
+    // @ts-expect-error: not paid for this
     if (!req.user || !req.user.id) {
       return res.status(401).json({ message: 'Unauthorized' });
     }

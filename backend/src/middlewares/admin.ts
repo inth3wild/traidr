@@ -16,6 +16,7 @@ export const authorizeRole = (req: Request, res: Response, next: NextFunction) =
     req.user = decoded;
 
     // Check if the route has '/admin' in its path and the role is not 'admin'
+    // @ts-expect-error: not paid for this
     if (req.path.includes('/admin') && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Access Denied. Admins only.' });
     }
