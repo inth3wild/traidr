@@ -89,7 +89,7 @@ const AdminLogin: React.FC = () => {
           }}
         />
         <FormContainer>
-          <a href="/">
+          <Link to="/">
             <img
               src={logo}
               alt="Logo"
@@ -101,7 +101,7 @@ const AdminLogin: React.FC = () => {
                 boxShadow: `0 2px 10px rgba(0, 0, 0, 0.1)`,
               }}
             />
-          </a>
+          </Link>
           <Title>Welcome Back, Admin</Title>
           <form onSubmit={handleSubmit}>
             <InputField>

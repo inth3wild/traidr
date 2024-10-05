@@ -6,10 +6,10 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <Logo>traïdr</Logo>
       <Nav>
-        <a href="/login">Log in</a>
-        <a href="/signup">
+        <Link to="/login">Log in</Link>
+        <Link to="/signup">
           <button>Sign Up</button>
-        </a>
+        </Link>
       </Nav>
     </HeaderContainer>
   );

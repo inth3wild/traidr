@@ -94,9 +94,9 @@ const SignUpPage: React.FC = () => {
       <Container>
         <BackgroundImage />
         <FormContainer>
-          <a href="/">
+          <Link to="/">
             <Logo src="./src/images/logo-removebg-preview.png" alt="Logo" />
-          </a>
+          </Link>
           <Title>Create an Account</Title>
           <form onSubmit={handleSubmit}>
             <InputField>
@@ -187,9 +187,9 @@ const SignUpPage: React.FC = () => {
           </form>
           <Footer>
             Already have an account?{' '}
-            <a href="/login" onClick={handleLoginLinkClick}>
+            <Link to="/login" onClick={handleLoginLinkClick}>
               Log In here
-            </a>
+            </Link>
           </Footer>
         </FormContainer>
       </Container>

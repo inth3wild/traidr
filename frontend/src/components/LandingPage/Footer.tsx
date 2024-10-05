@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
             We are a lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore exercitation ullamco
             laboris nisi ut aliquip ex ea commodo consequat...{' '}
-            <a href="#">Read More</a>
+            <Link to="#">Read More</Link>
           </FooterDescription>
         </FooterInfo>
 
@@ -50,19 +50,19 @@ const Footer: React.FC = () => {
             <h4>About</h4>
             <ul>
               <li>
-                <a href="#">About Us</a>
+                <Link to="#">About Us</Link>
               </li>
               <li>
-                <a href="#">Blog</a>
+                <Link to="#">Blog</Link>
               </li>
               <li>
-                <a href="#">Careers</a>
+                <Link to="#">Careers</Link>
               </li>
               <li>
-                <a href="#">Jobs</a>
+                <Link to="#">Jobs</Link>
               </li>
               <li>
-                <a href="#">In Press</a>
+                <Link to="#">In Press</Link>
               </li>
             </ul>
           </LinksGroup>
@@ -70,19 +70,19 @@ const Footer: React.FC = () => {
             <h4>Support</h4>
             <ul>
               <li>
-                <a href="#">Contact Us</a>
+                <Link to="#">Contact Us</Link>
               </li>
               <li>
-                <a href="#">Online Chat</a>
+                <Link to="#">Online Chat</Link>
               </li>
               <li>
-                <a href="#">WhatsApp</a>
+                <Link to="#">WhatsApp</Link>
               </li>
               <li>
-                <a href="#">Telegram</a>
+                <Link to="#">Telegram</Link>
               </li>
               <li>
-                <a href="#">Ticketing</a>
+                <Link to="#">Ticketing</Link>
               </li>
             </ul>
           </LinksGroup>
@@ -90,19 +90,19 @@ const Footer: React.FC = () => {
             <h4>FAQ</h4>
             <ul>
               <li>
-                <a href="#">Account</a>
+                <Link to="#">Account</Link>
               </li>
               <li>
-                <a href="#">Manage Deliveries</a>
+                <Link to="#">Manage Deliveries</Link>
               </li>
               <li>
-                <a href="#">Orders</a>
+                <Link to="#">Orders</Link>
               </li>
               <li>
-                <a href="#">Payments</a>
+                <Link to="#">Payments</Link>
               </li>
               <li>
-                <a href="#">Returns</a>
+                <Link to="#">Returns</Link>
               </li>
             </ul>
           </LinksGroup>
@@ -111,11 +111,11 @@ const Footer: React.FC = () => {
 
       <FooterBottom>
         <FooterBottomLinks>
-          <a href="#">About us</a>
-          <a href="#">Contact</a>
-          <a href="#">Privacy policy</a>
-          <a href="#">Sitemap</a>
-          <a href="#">Terms of Use</a>
+          <Link to="#">About us</Link>
+          <Link to="#">Contact</Link>
+          <Link to="#">Privacy policy</Link>
+          <Link to="#">Sitemap</Link>
+          <Link to="#">Terms of Use</Link>
         </FooterBottomLinks>
         <FooterBottomText>
           &copy; 2000-2024, All Rights Reserved

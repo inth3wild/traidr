@@ -80,7 +80,7 @@ const LogIn: React.FC = () => {
       showSuccessToast(response.data.message);
 
       return navigate('/ProductList');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error('Error logging in:', error);
       setLoading(false);
@@ -98,9 +98,9 @@ const LogIn: React.FC = () => {
       <Container>
         <BackgroundImage />
         <FormContainer>
-          <a href="/">
+          <Link to="/">
             <Logo src="./src/images/logo-removebg-preview.png" alt="Logo" />
-          </a>
+          </Link>
           <Title>Welcome back to Traidr</Title>
           <form onSubmit={handleSubmit}>
             <InputField>
@@ -168,9 +168,9 @@ const LogIn: React.FC = () => {
           </form>
           <Footer>
             Don't have an account?{' '}
-            <a href="/signup" onClick={handleSignUpLinkClick}>
+            <Link to="/signup" onClick={handleSignUpLinkClick}>
               Sign Up here
-            </a>
+            </Link>
           </Footer>
         </FormContainer>
       </Container>

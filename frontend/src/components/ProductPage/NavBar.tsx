@@ -11,9 +11,9 @@ export default function NavBar() {
   return (
     <div>
       <Nav>
-        <a href="/product">
+        <Link to="/product">
           <img src={Logo} alt="Logo" />
-        </a>
+        </Link>
         <StyledButton>
           <StyledIoMdNotificationsOutline />
           <img src={Profile} alt="Profile" />
@@ -23,5 +23,3 @@ export default function NavBar() {
     </div>
   );
 }
-
-

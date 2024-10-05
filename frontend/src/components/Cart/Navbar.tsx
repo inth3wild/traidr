@@ -128,9 +128,9 @@ const Navbar: React.FC<NavbarProps> = ({ userProfile }) => {
     >
       <Nav>
         <NavLeft>
-          <a href="/ProductList">
+          <Link to="/ProductList">
             <BrandLogo>traïdr</BrandLogo>
-          </a>
+          </Link>
         </NavLeft>
 
         <NavMiddle>
@@ -182,31 +182,31 @@ const Navbar: React.FC<NavbarProps> = ({ userProfile }) => {
           </Link>
 
           <StartSellingButton type="submit">
-            <a href="/create-shop" onClick={handleStartSellingLinkClick}>
+            <Link to="/create-shop" onClick={handleStartSellingLinkClick}>
               Start Selling
-            </a>
+            </Link>
           </StartSellingButton>
 
           {/* Profile Dropdown */}
           {isDropdownOpen && (
             <ProfileDropdown ref={dropdownRef}>
               <DropdownItem>
-                <a href="/wishlist">Wishlist</a>
+                <Link to="/wishlist">Wishlist</Link>
               </DropdownItem>
               <DropdownItem>
-                <a href="/cart">Cart</a>
+                <Link to="/cart">Cart</Link>
               </DropdownItem>
               <DropdownItem>
-                <a href="/profile">Profile</a>
+                <Link to="/profile">Profile</Link>
               </DropdownItem>
               <DropdownItem>
-                <a href="/MyShops">My Shops</a>
+                <Link to="/MyShops">My Shops</Link>
               </DropdownItem>
               <DropdownItem>
-                <a href="/product-page">Product-page</a>
+                <Link to="/product-page">Product-page</Link>
               </DropdownItem>
               <DropdownItem>
-                <a href="/ProductList">Product-list</a>
+                <Link to="/ProductList">Product-list</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to={`/orders/${userId}`}>My Orders</Link>

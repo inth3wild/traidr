@@ -97,7 +97,7 @@ const AdminSignUp: React.FC = () => {
           }}
         />
         <FormContainer>
-          <a href="/">
+          <Link to="/">
             <img
               src={logo}
               alt="Logo"
@@ -109,7 +109,7 @@ const AdminSignUp: React.FC = () => {
                 boxShadow: `0 2px 10px rgba(0, 0, 0, 0.1)`,
               }}
             />
-          </a>
+          </Link>
           <Title>Create an Admin Account</Title>
           <form onSubmit={handleSubmit}>
             <InputField>
@@ -197,9 +197,9 @@ const AdminSignUp: React.FC = () => {
           </form>
           <Footer>
             Already have an account?{' '}
-            <a href="/admin/login" onClick={handleLoginLinkClick}>
+            <Link to="/admin/login" onClick={handleLoginLinkClick}>
               Log In here
-            </a>
+            </Link>
           </Footer>
         </FormContainer>
       </Container>
