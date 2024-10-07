@@ -24,7 +24,7 @@ import {
 // import BellSVG from '../../images/bell-icon.svg';
 import CartIcon from '../../images/Cart-Icon.svg';
 import { CartContext, CartContextProps } from './CartProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   userProfile: {
@@ -40,6 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ userProfile }) => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const { totalItems } = useContext(CartContext) as CartContextProps;
   const userId = JSON.parse(localStorage.getItem('user')!).id;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userProfile?.profileImage) {
@@ -101,15 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ userProfile }) => {
     localStorage.removeItem('user');
     localStorage.removeItem('admin');
     localStorage.removeItem('adminId');
-    window.location.href = '/login';
-  };
-
-  // Define the handleStartSellingLinkClick function
-  const handleStartSellingLinkClick = (
-    e: React.MouseEvent<HTMLAnchorElement>
-  ) => {
-    e.preventDefault();
-    window.location.href = '/create-shop';
+    navigate('/login');
   };
 
   // Clear search input when CancelIcon is clicked
@@ -181,11 +174,9 @@ const Navbar: React.FC<NavbarProps> = ({ userProfile }) => {
             </CartIconContainer>
           </Link>
 
-          <StartSellingButton type="submit">
-            <Link to="/create-shop" onClick={handleStartSellingLinkClick}>
-              Start Selling
-            </Link>
-          </StartSellingButton>
+          <Link to="/create-shop">
+            <StartSellingButton type="submit">Start Selling</StartSellingButton>
+          </Link>
 
           {/* Profile Dropdown */}
           {isDropdownOpen && (
