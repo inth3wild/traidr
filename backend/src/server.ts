@@ -99,7 +99,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // General error handler
-app.use((err: HttpError, req: Request, res: Response) => {
+app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   console.error('Error: ', err.message);
   res.locals.message = err.message;
   res.locals.error =
